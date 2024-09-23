@@ -24,6 +24,5 @@
       },
       "command": "pnpm install && pnpm build"
     },
-    "installCommand": "pnpm install",
-    "startCommand": "pnpm start"
+    "installCommand": "pnpm install"
   }
