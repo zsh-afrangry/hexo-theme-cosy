@@ -13,6 +13,7 @@
     "version": "7.0.0"
   },
   "dependencies": {
+    "@cosy/hexo-test": "file:",
     "hexo": "7.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
