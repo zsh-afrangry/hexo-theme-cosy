@@ -2,25 +2,49 @@
     "version": 2,
     "builds": [
       {
-        "src": "package.json",
-        "use": "@vercel/static-build",
-        "config": {
-          "outputDirectory": "public",
-          "installCommand": "pnpm install",
-          "buildCommand": "pnpm build"
-        }
+        "src": "theme-cosy/build/**/*",
+        "use": "@vercel/static"
       }
     ],
-    "routes": [
+    "installCommand": "pnpm install",
+    "buildCommand": "pnpm build",
+    "outputDirectory": "theme-cosy/build",
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "redirects": [
       {
-        "handle": "filesystem"
+        "source": "/old-path",
+        "destination": "/new-path",
+        "permanent": true
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/blog/:slug",
+        "destination": "/posts/:slug.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/favicon.ico",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          }
+        ]
       },
       {
-        "src": "/(.*)",
-        "dest": "/index.html"
+        "source": "/assets/(.*)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
       }
     ],
     "env": {
-      "NODE_ENV": "production"
+      "HEXO_ENV": "production"
     }
   }
