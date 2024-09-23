@@ -5,7 +5,9 @@
         "src": "package.json",
         "use": "@vercel/static-build",
         "config": {
-          "distDir": "public"
+          "outputDirectory": "public",
+          "installCommand": "pnpm install",
+          "buildCommand": "pnpm build"
         }
       }
     ],
@@ -18,11 +20,7 @@
         "dest": "/index.html"
       }
     ],
-    "build": {
-      "env": {
-        "NODE_ENV": "production"
-      },
-      "command": "pnpm install && pnpm build"
-    },
-    "installCommand": "pnpm install"
+    "env": {
+      "NODE_ENV": "production"
+    }
   }
