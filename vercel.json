@@ -17,5 +17,13 @@
         "src": "/(.*)",
         "dest": "/index.html"
       }
-    ]
+    ],
+    "build": {
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "command": "pnpm install && pnpm build"
+    },
+    "installCommand": "pnpm install",
+    "startCommand": "pnpm start"
   }
